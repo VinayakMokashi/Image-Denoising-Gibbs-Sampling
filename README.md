@@ -114,20 +114,15 @@ python denoise.py demo
 `eta` and `beta` are relative: a higher `beta/eta` ratio means stronger
 smoothing (more weight on neighbours, less on the noisy observation).
 
-## How this version improves on the original notebook
+## Features
 
-- **Portable** — no hard-coded `C:/Users/...Downloads` paths; works on any
-  image via a CLI.
-- **Fast** — vectorised red/black (checkerboard) Gibbs sweeps replace the
-  pure-Python per-pixel triple loop (≈100× faster).
+- **Portable CLI** — denoise any image from the command line; no hard-coded paths.
+- **Fast** — vectorised red/black (checkerboard) Gibbs sweeps, ~100× faster than
+  a per-pixel Python loop.
 - **Robust image loading** — handles RGB, RGBA, palette and grayscale inputs of
-  any bit depth (the old `np.dot(img[...,:3], …)` crashed on grayscale and
-  mis-read 8-bit JPEGs); Otsu auto-thresholding by default.
-- **Correct output** — saves the real denoised image at native resolution
-  instead of a matplotlib figure with axes/title/padding.
-- **Parameters, not globals** — `eta`/`beta` are arguments, not module globals.
-- **Reproducible** — seeded RNG.
-- **Testable on anything** — built-in noise generator and `demo` command.
+  any bit depth, with Otsu auto-thresholding by default.
+- **Native-resolution output**, **reproducible** results (seeded RNG), and easy
+  testing via the built-in noise generator and `demo` command.
 
 ## Results
 
