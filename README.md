@@ -9,6 +9,11 @@ sampling** — a Markov Chain Monte Carlo (MCMC) method.
 |---|---|
 | ![noisy](Noisy.png) | ![denoised](Denoised.png) |
 
+- **Portable CLI** — denoise any image from the command line; no hard-coded paths.
+- **Fast** — vectorised red/black (checkerboard) Gibbs sweeps, ~100× faster than a per-pixel Python loop.
+- **Robust loading** — RGB, RGBA, palette and grayscale inputs of any bit depth, with Otsu auto-thresholding.
+- **Reproducible** — native-resolution output and a seeded RNG; test on anything with the built-in noise generator and `demo` command.
+
 ## The model
 
 Each hidden (clean) pixel `Y_i` and observed (noisy) pixel `X_i` take values in
@@ -113,16 +118,6 @@ python denoise.py demo
 
 `eta` and `beta` are relative: a higher `beta/eta` ratio means stronger
 smoothing (more weight on neighbours, less on the noisy observation).
-
-## Features
-
-- **Portable CLI** — denoise any image from the command line; no hard-coded paths.
-- **Fast** — vectorised red/black (checkerboard) Gibbs sweeps, ~100× faster than
-  a per-pixel Python loop.
-- **Robust image loading** — handles RGB, RGBA, palette and grayscale inputs of
-  any bit depth, with Otsu auto-thresholding by default.
-- **Native-resolution output**, **reproducible** results (seeded RNG), and easy
-  testing via the built-in noise generator and `demo` command.
 
 ## Results
 
